@@ -1,36 +1,21 @@
 <?php
 
-namespace Delosfei\Generator\Commands;
+namespace Delosfeiservices\Generator\Commands;
 
-use Delosfei\Generator\Makes\MakeFormRequest;
-use Delosfei\Generator\Makes\MakeLayout;
-use Delosfei\Generator\Makes\MakeMigration;
-use Delosfei\Generator\Makes\MakeModel;
-use Delosfei\Generator\Makes\MakeModelObserver;
-use Delosfei\Generator\Makes\MakeRoute;
-use Delosfei\Generator\Makes\MakerTrait;
-use Delosfei\Generator\Makes\MakeView;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Input;
-use Delosfei\Generator\Makes\MakePolicy;
-use Delosfei\Generator\Makes\MakeResource;
-use Delosfei\Generator\Makes\MakeSeed;
-use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Delosfei\Generator\Makes\MakeController;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Console\Command;
 
-class MakeCodeCommand extends Command
+
+class MakeServicesCommand extends Command
 {
-    use MakerTrait;
+
    // protected $signature = 'ds:code';
-    protected $name = 'ds:code';
+    protected $name = 'ds:services';
     protected $description = '生成结构代码';
     protected $meta;
     protected $files;
     private $composer;
-    private $nameModel = "";
 
 
     public function __construct(Filesystem $files)
