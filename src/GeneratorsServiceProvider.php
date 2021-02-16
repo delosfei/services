@@ -1,6 +1,6 @@
 <?php
 
-namespace Delosfeiservices\Generator;
+namespace Delosfei\Services;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,7 +23,7 @@ class GeneratorsServiceProvider extends ServiceProvider
 	private function registerScaffoldGenerator()
 	{
 		$this->app->singleton('command.larascaf.services', function ($app) {
-			return $app['Delosfeiservices\Generator\Commands\MakeServicesCommand'];
+			return $app['Delosfei\Services\Commands\MakeServicesCommand'];
 		});
 
 		$this->commands('command.larascaf.services');

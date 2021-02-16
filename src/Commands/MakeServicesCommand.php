@@ -1,6 +1,6 @@
 <?php
 
-namespace Delosfeiservices\Generator\Commands;
+namespace Delosfei\Services\Commands;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
