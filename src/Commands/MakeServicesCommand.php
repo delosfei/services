@@ -5,6 +5,8 @@ namespace Delosfei\Services\Commands;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 
 class MakeServicesCommand extends Command
@@ -146,10 +148,6 @@ class MakeServicesCommand extends Command
 
     }
 
-    protected function makeMigration()
-    {
-        new MakeMigration($this, $this->files);
-    }
 
 
     private function makeSeed()
@@ -163,21 +161,12 @@ class MakeServicesCommand extends Command
     }
 
 
-    private function makeController()
-    {
-        new MakeController($this, $this->files);
-    }
-
-    private function makeFormRequest()
-    {
-        new MakeFormRequest($this, $this->files);
-    }
 
 
-    private function makeModelObserver()
-    {
-        new MakeModelObserver($this, $this->files);
-    }
+
+
+
+
 
 
     private function makePolicy()
