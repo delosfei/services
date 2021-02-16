@@ -1,0 +1,34 @@
+{
+  "name": "delosfei/services",
+  "description": "Extend Laravel's generators services.",
+  "type": "package",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.3.3",
+    "laravel/laravel": "8.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Delosfeiservices\\Generator\\": "src/"
+    }
+  },
+
+  "authors": [
+    {
+      "name": "Delosfei",
+      "email": "9739723@qq.com"
+    }
+  ],
+
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Delosfeiservices\\Generator\\GeneratorsServiceProvider"
+      ]
+    }
+  }
+}
