@@ -102,8 +102,8 @@ class MakeServicesCommand extends Command
         $path = 'config/app.php';
 
         $content = $this->files->get($path);
-        $name_gen = $this->scaffoldCommandObj->getObjName('Name');
-        $name = $this->scaffoldCommandObj->getObjName('Name').'ServiceProvider::class';
+        $name_gen = $this->getObjName('Name');
+        $name = $this->getObjName('Name').'ServiceProvider::class';
         if (strpos($content, $name) === false) {
 
 
