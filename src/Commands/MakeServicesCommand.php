@@ -40,7 +40,7 @@ class MakeServicesCommand extends Command
         $this->makeMeta();
         $this->makeFacade();
 //        $this->makeService();
-//        $this->makeServiceProvider();
+        $this->makeServiceProvider();
 
         $this->line("\n----------- $footer -----------");
         $this->comment("----------- $dump -----------");

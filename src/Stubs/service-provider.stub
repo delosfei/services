@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Services\{{Name}};
+
+use Illuminate\Support\ServiceProvider;
+
+class {{Name}}ServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *+-
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->singleton('{{Name}}Service', function ($app) {
+            return new {{Name}}Service($app);
+        });
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+}

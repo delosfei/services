@@ -9,6 +9,7 @@ trait MakerTrait
 {
     protected $files;
     protected $scaffoldCommandObj;
+
     public function __construct(MakeServicesCommand $scaffoldCommand, Filesystem $files)
     {
         $this->files = $files;
@@ -99,13 +100,7 @@ trait MakerTrait
 
     protected function getPath($file_name)
     {
-
-
-
-
-            return 'App/Services/'.$this->scaffoldCommandObj->getObjName('Name').$file_name.'.php';
-
-
+        return 'App/Services/'.$this->scaffoldCommandObj->getObjName('Name').'/'.$file_name.'.php';
     }
 
     protected function getFile($file)
@@ -131,8 +126,6 @@ trait MakerTrait
         $stub = $this->files->get(substr(__DIR__, 0, -5).'Stubs/'.$filename.'.stub');
 
         $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
-
-
         // $this->replaceValidator($stub);
 
         return $stub;

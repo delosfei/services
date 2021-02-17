@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Services\{{Name}};
+
+use App\Models\{{Name}};
+
+
+class {{Name}}Service
+{
+
+    public function aa()
+    {
+
+    }
+}
