@@ -130,7 +130,8 @@ trait MakerTrait
     {
         $stub = $this->files->get(substr(__DIR__, 0, -5).'Stubs/'.$filename.'.stub');
 
-        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
+        $this->buildStub($this->scaffoldCommandObj->getObjName('Name'), $stub);
+
 
         // $this->replaceValidator($stub);
 
