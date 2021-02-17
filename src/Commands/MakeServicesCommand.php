@@ -18,6 +18,7 @@ class MakeServicesCommand extends Command
     // protected $signature = 'ds:code';
     protected $name = 'ds:services';
     protected $description = '生成结构代码';
+    protected $meta;
     protected $files;
     private $composer;
 
@@ -36,7 +37,7 @@ class MakeServicesCommand extends Command
         $dump = str_pad('>DUMP AUTOLOAD<', strlen($header), ' ', STR_PAD_BOTH);
 
         $this->line("\n----------- $header -----------\n");
-
+        $this->makeMeta();
         $this->makeFacade();
         $this->makeService();
         $this->makeServiceProvider();
@@ -56,7 +57,16 @@ class MakeServicesCommand extends Command
             ];
     }
 
+    protected function makeMeta()
+    {
 
+
+
+        $this->meta['Names'] = $this->getObjName('Names');
+
+
+
+    }
 
     public function getObjName($config = 'Name')
     {
@@ -71,7 +81,10 @@ class MakeServicesCommand extends Command
 
         return $names[$config];
     }
-
+    public function getMeta()
+    {
+        return $this->meta;
+    }
     protected function makeFacade()
     {
         new MakeFacade($this, $this->files);
