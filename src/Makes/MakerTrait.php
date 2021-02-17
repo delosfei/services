@@ -103,7 +103,7 @@ trait MakerTrait
 
 
 
-            return 'App/Http/Services/'.$file_name.'.php';
+            return 'App/Services/'.$file_name.'.php';
 
 
     }

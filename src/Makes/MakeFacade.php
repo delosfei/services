@@ -24,13 +24,4 @@ class MakeFacade
         $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
-
-
-
-
-
-
-
-
-
 }

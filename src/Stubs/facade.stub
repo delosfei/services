@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\{{Code}};
+namespace App\Services\{{Name}};
 
 use Illuminate\Support\Facades\Facade;
 
-class CodeFacade extends Facade
+class {{Name}}Facade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'CodeService';
+        return '{{Name}}Service';
     }
 }
