@@ -4,7 +4,7 @@ namespace Delosfei\Services\Makes;
 
 
 
-class makeFacade
+class MakeFacade
 {
     use MakerTrait;
 
