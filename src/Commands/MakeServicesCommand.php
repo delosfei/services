@@ -42,6 +42,7 @@ class MakeServicesCommand extends Command
         $this->makeFacade();
         $this->makeService();
         $this->makeServiceProvider();
+        $this->updateConfigApp();
         $this->line("\n----------- $footer -----------");
         $this->comment("----------- $dump -----------");
         $this->composer->dumpAutoloads();
@@ -73,10 +74,12 @@ class MakeServicesCommand extends Command
 
         return $names[$config];
     }
+
     public function getMeta()
     {
         return $this->meta;
     }
+
     protected function makeFacade()
     {
         new MakeFacade($this, $this->files);
@@ -91,6 +94,7 @@ class MakeServicesCommand extends Command
     {
         new MakeServiceProvider($this, $this->files);
     }
+
     protected function updateConfigApp()
     {
 
@@ -98,23 +102,27 @@ class MakeServicesCommand extends Command
         $path = 'config/app.php';
 
         $content = $this->files->get($path);
-$name_gen=$this->scaffoldCommandObj->getObjName('Name');
-        $name = $this->scaffoldCommandObj->getObjName('Name') . 'ServiceProvider::class';
+        $name_gen = $this->scaffoldCommandObj->getObjName('Name');
+        $name = $this->scaffoldCommandObj->getObjName('Name').'ServiceProvider::class';
         if (strpos($content, $name) === false) {
 
 
             $content = str_replace(
 
-                ["'providers' => [","'aliases' => ["],
+                ["'providers' => [", "'aliases' => ["],
 
-                ["'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,","'aliases' => [\n\t\t\\'".$name_gen."\\' => Illuminate\Support\Facades\\".$name_gen."::class,"],
+                [
+                    "'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,",
+                    "'aliases' => [\n\t\t\\'".$name_gen."\\' => Illuminate\Support\Facades\\".$name_gen."::class,",
+                ],
 
                 $content
             );
             $this->files->put($path, $content);
 
-            return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
+            return $this->scaffoldCommandObj->info('+ '.$path.' (Updated)');
         }
 
 
+    }
 }
