@@ -103,7 +103,7 @@ trait MakerTrait
 
 
 
-            return 'App/Services/'.$file_name.'.php';
+            return 'App/Services/'.$this->scaffoldCommandObj->getObjName('Name').$file_name.'.php';
 
 
     }
