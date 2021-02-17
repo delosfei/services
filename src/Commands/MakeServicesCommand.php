@@ -2,13 +2,14 @@
 
 namespace Delosfei\Services\Commands;
 
-use Delosfei\Services\Makes\makeFacade;
+use Delosfei\Services\Makes\MakeFacade;
 use Delosfei\Services\Makes\MakerTrait;
+use Delosfei\Services\Makes\MakeService;
+use Delosfei\Services\Makes\MakeServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Input;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 
 class MakeServicesCommand extends Command
@@ -39,7 +40,7 @@ class MakeServicesCommand extends Command
         $this->line("\n----------- $header -----------\n");
         $this->makeMeta();
         $this->makeFacade();
-//        $this->makeService();
+        $this->makeService();
         $this->makeServiceProvider();
 
         $this->line("\n----------- $footer -----------");
