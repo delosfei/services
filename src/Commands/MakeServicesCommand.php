@@ -57,13 +57,7 @@ class MakeServicesCommand extends Command
 
     protected function makeMeta()
     {
-
-
-
         $this->meta['Name'] = $this->getObjName('Name');
-
-
-
     }
 
     public function getObjName($config = 'Name')
@@ -97,5 +91,30 @@ class MakeServicesCommand extends Command
     {
         new MakeServiceProvider($this, $this->files);
     }
+    protected function updateConfigApp()
+    {
+
+
+        $path = 'config/app.php';
+
+        $content = $this->files->get($path);
+$name_gen=$this->scaffoldCommandObj->getObjName('Name');
+        $name = $this->scaffoldCommandObj->getObjName('Name') . 'ServiceProvider::class';
+        if (strpos($content, $name) === false) {
+
+
+            $content = str_replace(
+
+                ["'providers' => [","'aliases' => ["],
+
+                ["'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,","'aliases' => [\n\t\t\\'".$name_gen."\\' => Illuminate\Support\Facades\\".$name_gen."::class,"],
+
+                $content
+            );
+            $this->files->put($path, $content);
+
+            return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
+        }
+
 
 }
