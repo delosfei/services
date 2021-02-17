@@ -109,8 +109,11 @@ class MakeServicesCommand extends Command
 
             $content = str_replace(
 
-                "'providers' => [",
-                "'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,",
+                ["'providers' => [","'aliases' => ["],
+                [
+                    "'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,",
+                    "'aliases' => [\n\t\t\'".$name_gen."' => Illuminate\Support\\".$name_gen."::class,"
+                ],
                 $content
             );
             $this->files->put($path, $content);
