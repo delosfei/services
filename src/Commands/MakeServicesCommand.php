@@ -37,7 +37,7 @@ class MakeServicesCommand extends Command
         $dump = str_pad('>DUMP AUTOLOAD<', strlen($header), ' ', STR_PAD_BOTH);
 
         $this->line("\n----------- $header -----------\n");
-        $this->makeMeta();
+
         $this->makeFacade();
         $this->makeService();
         $this->makeServiceProvider();
@@ -56,14 +56,8 @@ class MakeServicesCommand extends Command
                 ['name', InputArgument::REQUIRED, 'The name of the model. (Ex: User)'],
             ];
     }
-    protected function makeMeta()
-    {
-        $this->meta['Model'] = $this->getObjName('Name');
-    }
-    public function getMeta()
-    {
-        return $this->meta;
-    }
+
+
 
     public function getObjName($config = 'Name')
     {

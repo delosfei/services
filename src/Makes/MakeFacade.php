@@ -19,24 +19,15 @@ class makeFacade
 
         $this->makeDirectory($path);
 
-        $this->files->put($path, $this->compileControllerStub());
+        $this->files->put($path, $this->compileStub('facade'));
 
         $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
 
-    protected function compileControllerStub()
-    {
 
 
-        $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/facade.stub');
 
-
-        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
-        // $this->replaceValidator($stub);
-
-        return $stub;
-    }
 
 
 
