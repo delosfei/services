@@ -112,7 +112,7 @@ class MakeServicesCommand extends Command
                 ["'providers' => [","'aliases' => ["],
                 [
                     "'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,",
-                    "'aliases' => [\n\t\t\'".$name_gen."Service' => App\Services\\".$name_gen."\\".$name_gen."Facade::class,"
+                    "'aliases' => [\n\t\t'".$name_gen."Service' => \\App\Services\\".$name_gen."\\".$name_gen."Facade::class,"
                 ],
                 $content
             );
