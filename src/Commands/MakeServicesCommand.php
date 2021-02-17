@@ -39,8 +39,8 @@ class MakeServicesCommand extends Command
         $this->line("\n----------- $header -----------\n");
         $this->makeMeta();
         $this->makeFacade();
-        $this->makeService();
-        $this->makeServiceProvider();
+//        $this->makeService();
+//        $this->makeServiceProvider();
 
         $this->line("\n----------- $footer -----------");
         $this->comment("----------- $dump -----------");
