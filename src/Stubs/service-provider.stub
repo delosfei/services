@@ -6,11 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class {{Name}}ServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *+-
-     * @return void
-     */
     public function register()
     {
         $this->app->singleton('{{Name}}Service', function ($app) {
@@ -18,11 +13,6 @@ class {{Name}}ServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
     public function boot()
     {
         //

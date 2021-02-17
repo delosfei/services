@@ -11,7 +11,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Input;
 use Symfony\Component\Console\Input\InputArgument;
 
-
 class MakeServicesCommand extends Command
 {
     use MakerTrait;
@@ -33,7 +32,7 @@ class MakeServicesCommand extends Command
 
     public function handle()
     {
-        $header = "scaffolding: {$this->getObjName("Name")}";
+        $header = "makeservice: {$this->getObjName("Name")}";
         $footer = str_pad('', strlen($header), '-');
         $dump = str_pad('>DUMP AUTOLOAD<', strlen($header), ' ', STR_PAD_BOTH);
 
@@ -67,7 +66,7 @@ class MakeServicesCommand extends Command
         $args_name = $this->argument('name');
 
         // Article
-        $names['Name'] = \Str::singular(ucfirst($args_name));
+        $names['Name'] = ucfirst($args_name);
         if (!isset($names[$config])) {
             throw new \Exception("Position name is not found");
         };
@@ -97,22 +96,16 @@ class MakeServicesCommand extends Command
 
     protected function updateConfigApp()
     {
-
-
         $path = 'config/app.php';
-
         $content = $this->files->get($path);
         $name_gen = $this->getObjName('Name');
         $name = $this->getObjName('Name').'ServiceProvider::class';
         if (strpos($content, $name) === false) {
-
-
             $content = str_replace(
-
-                ["'providers' => [","'aliases' => ["],
+                ["'providers' => [", "'aliases' => ["],
                 [
                     "'providers' => [\n\t\t\\App\Services\\".$name_gen."\\".$name_gen."ServiceProvider::class,",
-                    "'aliases' => [\n\t\t'".$name_gen."Service' => \\App\Services\\".$name_gen."\\".$name_gen."Facade::class,"
+                    "'aliases' => [\n\t\t'".$name_gen."Service' => \\App\Services\\".$name_gen."\\".$name_gen."Facade::class,",
                 ],
                 $content
             );
@@ -120,7 +113,5 @@ class MakeServicesCommand extends Command
 
             return $this->info('+ '.$path.' (Updated)');
         }
-
-
     }
 }

@@ -7,18 +7,15 @@ use Illuminate\Support\ServiceProvider;
 class GeneratorsServiceProvider extends ServiceProvider
 {
 
-
 	public function boot()
 	{
 
 	}
 
-
 	public function register()
 	{
         $this->registerScaffoldGenerator();
 	}
-
 
 	private function registerScaffoldGenerator()
 	{

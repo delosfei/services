@@ -17,26 +17,6 @@ trait MakerTrait
         $this->start();
     }
 
-    protected function getArrayRecursive(array $array, $parent = '')
-    {
-        $data = [];
-
-        foreach ($array as $key => $value) {
-            if (gettype($value) == 'array') {
-                array_merge(
-                    $data,
-                    $this->getArrayRecursive($value, "$parent")
-                );
-                continue;
-            }
-
-            $data["$parent.$key"] = $value;
-        }
-
-        return $data;
-    }
-
-
     protected function getFilesRecursive($path)
     {
         $files = [];
@@ -60,32 +40,9 @@ trait MakerTrait
         return $files;
     }
 
-
     protected function getStubPath()
     {
         return substr(__DIR__, 0, -5).'Stubs'.DIRECTORY_SEPARATOR;
-    }
-
-
-    protected function getStubFields($ui, $type)
-    {
-        $stubsFieldsPath = $this->getStubPath().join(DIRECTORY_SEPARATOR, ['views', $ui, 'fields', $type, '']);
-
-        if ($this->existsDirectory($stubsFieldsPath)) {
-            $this->scaffoldCommandObj->error('Stub not found');
-
-            return;
-        }
-
-        $stubsFieldsFiles = $this->getFilesRecursive($stubsFieldsPath);
-
-        $stubs = [];
-
-        foreach ($stubsFieldsFiles as $file) {
-            $stubs[str_replace($stubsFieldsPath, '', $file)] = $this->getFile($file);
-        }
-
-        return $stubs;
     }
 
     protected function buildStub(array $metas, &$template)
@@ -96,7 +53,6 @@ trait MakerTrait
 
         return $template;
     }
-
 
     protected function getPath($file_name)
     {
@@ -113,7 +69,6 @@ trait MakerTrait
         return !$this->files->isDirectory($path);
     }
 
-
     protected function makeDirectory($path)
     {
         if (!$this->files->isDirectory(dirname($path))) {
@@ -126,10 +81,7 @@ trait MakerTrait
         $stub = $this->files->get(substr(__DIR__, 0, -5).'Stubs/'.$filename.'.stub');
 
         $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
-        // $this->replaceValidator($stub);
 
         return $stub;
     }
-
-
 }

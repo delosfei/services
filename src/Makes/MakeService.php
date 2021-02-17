@@ -2,8 +2,6 @@
 
 namespace Delosfei\Services\Makes;
 
-
-
 class MakeService
 {
     use MakerTrait;
