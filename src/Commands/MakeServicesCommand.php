@@ -42,12 +42,9 @@ class MakeServicesCommand extends Command
         $this->makeFacade();
         $this->makeService();
         $this->makeServiceProvider();
-
         $this->line("\n----------- $footer -----------");
         $this->comment("----------- $dump -----------");
-
         $this->composer->dumpAutoloads();
-
     }
 
     protected function getArguments()
