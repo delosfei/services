@@ -29,7 +29,6 @@ class MakeServicesCommand extends Command
         $this->composer = app()['composer'];
     }
 
-
     public function handle()
     {
         $header = "scaffolding: {$this->getObjName("Name")}";
@@ -75,7 +74,7 @@ class MakeServicesCommand extends Command
 
     protected function makeFacade()
     {
-        new makeFacade($this, $this->files);
+        new MakeFacade($this, $this->files);
     }
 
     protected function makeService()
