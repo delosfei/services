@@ -62,7 +62,7 @@ class MakeServicesCommand extends Command
 
 
 
-        $this->meta['Names'] = $this->getObjName('Names');
+        $this->meta['Names'] = $this->getObjName('Name');
 
 
 
