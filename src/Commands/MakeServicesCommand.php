@@ -120,7 +120,7 @@ class MakeServicesCommand extends Command
             );
             $this->files->put($path, $content);
 
-            return $this->scaffoldCommandObj->info('+ '.$path.' (Updated)');
+            return $this->info('+ '.$path.' (Updated)');
         }
 
 
